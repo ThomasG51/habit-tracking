@@ -7,28 +7,33 @@
 
 import SwiftUI
 
-struct activitie {
+struct Activity: Identifiable {
+    let id: UUID = UUID()
     let title: String
     let description: String
 }
 
 struct ContentView: View {
-    @State private var activities: [activitie] = [activitie]()
-    @State private var showingAddActivitie: Bool = false
+    //@Environment(\.presentationMode) var presentationMode
     
-    @State private var activitieTitle: String = ""
-    @State private var activitieDescription: String = ""
+    @State private var activities: [Activity] = [Activity]()
+    @State private var showingAddActivity: Bool = false
+    
+    @State private var activityTitle: String = ""
+    @State private var activityDescription: String = ""
     
     var body: some View {
         NavigationView {
             List {
-                Text("List of activities")
+                ForEach(activities) { activity in
+                    Text(activity.title)
+                }
             }
             .navigationBarTitle(Text("Activities"))
             .navigationBarItems(trailing:
                 Button(
                     action:{
-                        self.showingAddActivitie = true
+                        self.showingAddActivity = true
                     },
                     label: {
                         Image(systemName: "plus")
@@ -36,21 +41,26 @@ struct ContentView: View {
                 )
             )
         }
-        .sheet(isPresented: $showingAddActivitie) {
+        .sheet(isPresented: $showingAddActivity) {
             NavigationView {
                 Form {
                     Section(header: Text("Title")) {
-                        TextField("Title", text: $activitieTitle)
+                        TextField("Title", text: $activityTitle)
                     }
                     
                     Section(header: Text("Description")) {
-                        TextField("Description", text: $activitieDescription)
+                        TextField("Description", text: $activityDescription)
                     }
                 }
-                .navigationBarTitle(Text("Add activitie"))
+                .navigationBarTitle(Text("Add activity"))
                 .navigationBarItems(trailing:
                     Button(
-                        action: {},
+                        action: {
+                            let activity = Activity(title: self.activityTitle, description: self.activityDescription)
+                            self.activities.append(activity)
+                            //self.presentationMode.wrappedValue.dismiss()
+                            self.showingAddActivity = false
+                        },
                         label: {
                             Text("Save")
                         }
