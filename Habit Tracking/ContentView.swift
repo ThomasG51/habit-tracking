@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Activity: Identifiable {
+struct Habit: Identifiable {
     let id: UUID = UUID()
     let title: String
     let description: String
@@ -16,24 +16,26 @@ struct Activity: Identifiable {
 struct ContentView: View {
     //@Environment(\.presentationMode) var presentationMode
     
-    @State private var activities: [Activity] = [Activity]()
-    @State private var showingAddActivity: Bool = false
+    @State private var habits: [Habit] = [Habit]()
+    @State private var showingAddHabit: Bool = false
     
-    @State private var activityTitle: String = ""
-    @State private var activityDescription: String = ""
+    @State private var habitTitle: String = ""
+    @State private var habitDescription: String = ""
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(activities) { activity in
-                    Text(activity.title)
+                ForEach(habits) { habit in
+                    NavigationLink(destination: HabitVew(habit: habit)) {
+                        Text(habit.title)
+                    }
                 }
             }
-            .navigationBarTitle(Text("Activities"))
+            .navigationBarTitle(Text("Habits Tracker"))
             .navigationBarItems(trailing:
                 Button(
                     action:{
-                        self.showingAddActivity = true
+                        self.showingAddHabit = true
                     },
                     label: {
                         Image(systemName: "plus")
@@ -41,25 +43,25 @@ struct ContentView: View {
                 )
             )
         }
-        .sheet(isPresented: $showingAddActivity) {
+        .sheet(isPresented: $showingAddHabit) {
             NavigationView {
                 Form {
                     Section(header: Text("Title")) {
-                        TextField("Title", text: $activityTitle)
+                        TextField("Title", text: $habitTitle)
                     }
                     
                     Section(header: Text("Description")) {
-                        TextField("Description", text: $activityDescription)
+                        TextField("Description", text: $habitDescription)
                     }
                 }
-                .navigationBarTitle(Text("Add activity"))
+                .navigationBarTitle(Text("Add Habit"))
                 .navigationBarItems(trailing:
                     Button(
                         action: {
-                            let activity = Activity(title: self.activityTitle, description: self.activityDescription)
-                            self.activities.append(activity)
+                            let habit = Habit(title: self.habitTitle, description: self.habitDescription)
+                            self.habits.append(habit)
                             //self.presentationMode.wrappedValue.dismiss()
-                            self.showingAddActivity = false
+                            self.showingAddHabit = false
                         },
                         label: {
                             Text("Save")
