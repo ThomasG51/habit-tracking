@@ -7,25 +7,15 @@
 
 import SwiftUI
 
-struct Habit: Identifiable {
-    let id: UUID = UUID()
-    let title: String
-    let description: String
-}
-
 struct ContentView: View {
-    //@Environment(\.presentationMode) var presentationMode
+    @ObservedObject var tracker: Tracker = Tracker()
     
-    @State private var habits: [Habit] = [Habit]()
     @State private var showingAddHabit: Bool = false
-    
-    @State private var habitTitle: String = ""
-    @State private var habitDescription: String = ""
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(habits) { habit in
+                ForEach(self.tracker.habits) { habit in
                     NavigationLink(destination: HabitVew(habit: habit)) {
                         Text(habit.title)
                     }
@@ -44,31 +34,7 @@ struct ContentView: View {
             )
         }
         .sheet(isPresented: $showingAddHabit) {
-            NavigationView {
-                Form {
-                    Section(header: Text("Title")) {
-                        TextField("Title", text: $habitTitle)
-                    }
-                    
-                    Section(header: Text("Description")) {
-                        TextField("Description", text: $habitDescription)
-                    }
-                }
-                .navigationBarTitle(Text("Add Habit"))
-                .navigationBarItems(trailing:
-                    Button(
-                        action: {
-                            let habit = Habit(title: self.habitTitle, description: self.habitDescription)
-                            self.habits.append(habit)
-                            //self.presentationMode.wrappedValue.dismiss()
-                            self.showingAddHabit = false
-                        },
-                        label: {
-                            Text("Save")
-                        }
-                    )
-                )
-            }
+            AddHabitView(tracker: self.tracker)
         }
     }
 }
