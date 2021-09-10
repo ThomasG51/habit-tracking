@@ -13,8 +13,16 @@ struct HabitVew: View {
     var body: some View {
         VStack {
             Text(habit.title)
+                .font(.title)
+                .padding(.bottom, 30)
             
             Text(habit.description)
+                .font(.body)
+                .padding(.bottom, 30)
+            
+            Text("Count: 0")
+                .font(.body)
+                .foregroundColor(.red)
         }
     }
 }
