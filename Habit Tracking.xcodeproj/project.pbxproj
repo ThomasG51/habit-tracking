@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E6B1E0726EAB9FB001ECB00 /* HabitVew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B1E0626EAB9FB001ECB00 /* HabitVew.swift */; };
+		7E6B1E0726EAB9FB001ECB00 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B1E0626EAB9FB001ECB00 /* HabitView.swift */; };
 		7E86B7BB26EB28A0009F30C8 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86B7BA26EB28A0009F30C8 /* HabitModel.swift */; };
 		7E86B7BD26EB2A6F009F30C8 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86B7BC26EB2A6F009F30C8 /* Tracker.swift */; };
 		7E86B7BF26EB724A009F30C8 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86B7BE26EB724A009F30C8 /* AddHabitView.swift */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7E6B1E0626EAB9FB001ECB00 /* HabitVew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitVew.swift; sourceTree = "<group>"; };
+		7E6B1E0626EAB9FB001ECB00 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		7E86B7BA26EB28A0009F30C8 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		7E86B7BC26EB2A6F009F30C8 /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		7E86B7BE26EB724A009F30C8 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 				7E86B7BE26EB724A009F30C8 /* AddHabitView.swift */,
 				7E86B7BC26EB2A6F009F30C8 /* Tracker.swift */,
 				7E86B7BA26EB28A0009F30C8 /* HabitModel.swift */,
-				7E6B1E0626EAB9FB001ECB00 /* HabitVew.swift */,
+				7E6B1E0626EAB9FB001ECB00 /* HabitView.swift */,
 				7E95570526EA704F00AB0393 /* Assets.xcassets */,
 				7E95570A26EA704F00AB0393 /* Info.plist */,
 				7E95570726EA704F00AB0393 /* Preview Content */,
@@ -154,7 +154,7 @@
 				7E95570426EA704E00AB0393 /* ContentView.swift in Sources */,
 				7E86B7BD26EB2A6F009F30C8 /* Tracker.swift in Sources */,
 				7E95570226EA704E00AB0393 /* Habit_TrackingApp.swift in Sources */,
-				7E6B1E0726EAB9FB001ECB00 /* HabitVew.swift in Sources */,
+				7E6B1E0726EAB9FB001ECB00 /* HabitView.swift in Sources */,
 				7E86B7BF26EB724A009F30C8 /* AddHabitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

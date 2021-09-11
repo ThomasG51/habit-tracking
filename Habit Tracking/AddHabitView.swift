@@ -12,6 +12,7 @@ struct AddHabitView: View {
     
     @State private var habitTitle: String = ""
     @State private var habitDescription: String = ""
+    @State private var showingAlert: Bool = false
     
     @ObservedObject var tracker: Tracker
     
@@ -31,7 +32,13 @@ struct AddHabitView: View {
                 Button(
                     action: {
                         let habit = Habit(title: self.habitTitle, description: self.habitDescription)
-                        tracker.habits.append(habit)
+                        
+                        if tracker.habits.firstIndex(where: { $0.title == habit.title }) == nil {
+                            tracker.habits.append(habit)
+                        } else {
+                            self.showingAlert = true
+                        }
+                        
                         self.presentationMode.wrappedValue.dismiss()
                     },
                     label: {
@@ -39,6 +46,9 @@ struct AddHabitView: View {
                     }
                 )
             )
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Error"), message: Text("Duplicate Habit Found!"), dismissButton: .cancel())
+            }
         }
     }
 }

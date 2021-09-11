@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(self.tracker.habits) { habit in
-                    NavigationLink(destination: HabitVew(habit: habit)) {
+                    NavigationLink(destination: HabitView(tracker: self.tracker, habit: habit)) {
                         Text(habit.title)
                     }
                 }
