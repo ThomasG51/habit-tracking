@@ -12,6 +12,10 @@ struct ContentView: View {
     
     @State private var showingAddHabit: Bool = false
     
+    func removeItem(at offsets: IndexSet) {
+        tracker.habits.remove(atOffsets: offsets)
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -20,9 +24,12 @@ struct ContentView: View {
                         Text(habit.title)
                     }
                 }
+                .onDelete(perform: removeItem)
             }
             .navigationBarTitle(Text("Habits Tracker"))
-            .navigationBarItems(trailing:
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing:
                 Button(
                     action:{
                         self.showingAddHabit = true
